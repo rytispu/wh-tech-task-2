@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  wh-db:
+    image: mysql:latest
+    restart: always
+    volumes:
+      - ./db_data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3389:3306"
+    env_file:
+      - './.env'
+  wh-app:
+    build: .
+    restart: always
+    depends_on:
+      - wh-db
+    ports:
+      - "8089:80"
+    volumes:
+      - .:/var/www/html
+volumes:
+  db_data:
