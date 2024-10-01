@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WHInterviewTask\Database;
 
-use WHInterviewTask\Config\Config;
+use Config\Config;
 use PDO;
 use PDOException;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WHInterviewTask\Config;
+namespace Config;
 
 class Config
 {
